@@ -6,18 +6,31 @@
 @tailwind components;
 @tailwind utilities;
 
-.nav{
-  @apply flex flex-col space-y-4;
+.tag {
+    @apply px-2 py-1 rounded-md bg-blue-100 text-blue-500
+     font-medium text-xs align-middle cursor-pointer;
 }
 
-.nav-item{
-  @apply px-5 py-2 rounded-lg cursor-pointer duration-300 text-gray-500;
+.tag--normal {
+    @apply font-normal text-sm;
 }
 
-.nav-item:hover{
-  @apply bg-indigo-100;
+.tag--red {
+    @apply bg-red-100 text-red-700;
 }
 
-.nav-item--active{
-  @apply bg-indigo-100 text-blue-700;
+.tag--gray {
+    @apply bg-gray-100 text-gray-700;
+}
+
+.tag--blue {
+    @apply bg-blue-100 text-blue-700;
+}
+
+.tag--yellow {
+    @apply bg-yellow-100 text-yellow-700;
+}
+
+.tag--green {
+    @apply bg-green-100 text-green-700;
 }
