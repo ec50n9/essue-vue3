@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import Home from './pages/home.vue';
-
 </script>
 
 <template>
-<Home></Home>
+    <RouterView></RouterView>
 </template>
 
 <style scoped>
