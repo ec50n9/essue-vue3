@@ -60,7 +60,7 @@ const type2Tag = (type: IssueListItem['type']) => {
         <p class="mt-4 text-lg text-gray-500">遇到问题啦？大伙一起来解决！</p>
     </div>
     <div class="banner my-8 py-8 rounded-xl bg-blue-100 text-gray-500
-                    flex items-center">
+                    flex items-center shadow-lg shadow-blue-50">
         <div class="grow text-center">
             <p>已解决</p>
             <p class="mt-1 text-3xl text-gray-700">34</p>
