@@ -1,9 +1,28 @@
 <script lang="ts" setup>
-import Home from './home.vue';
+import router from '../router'
+
+const navList = [
+    {
+        path:'/',
+        name: '首页'
+    },{
+        path: '/issues',
+        name: '问答'
+    },{
+        path: '/wiki',
+        name: '知识库'
+    },{
+        path: '/square',
+        name: '广场'
+    },{
+        path: '/about',
+        name: '关于我们'
+    }
+]
 </script>
 
 <template>
-    <header class="border-b-2 bg-white">
+    <header class="sticky top-0 w-full border-b-2 bg-white">
         <!-- 顶部栏 -->
         <div class="container mx-auto flex h-16 items-center gap-4">
             <h1 class="text-xl font-medium">#Essue</h1>
@@ -32,24 +51,24 @@ import Home from './home.vue';
     </header>
     <div class="wrapper container mx-auto flex gap-4">
         <!-- 侧边栏 -->
-        <div class="side-bar w-96 bg-white">
-            <!-- 个人信息卡片 -->
-            <div class="my-8">
-                <div class="rounded-lg bg-blue-100 p-4">
-                    <h3 class="text-gray-500">今日活力：</h3>
-                    <p class="mt-2 text-center text-xl font-bold text-gray-500">999</p>
+        <div class="side-bar flex-shrink-0 w-3/12 bg-white">
+            <div class="sticky top-16 pt-8">
+                <!-- 个人信息卡片 -->
+                <div class="mb-8">
+                    <div class="rounded-lg bg-blue-100 p-4">
+                        <h3 class="text-gray-500">今日活力：</h3>
+                        <p class="mt-2 text-center text-xl font-bold text-gray-500">999</p>
+                    </div>
                 </div>
+                <!-- 菜单列表 -->
+                <ul class="nav">
+                    <RouterLink v-for="item in navList" :key="item.path" :to="item.path">
+                        <li class="nav-item" :class="{'nav-item--active': router.options.history.location===item.path}">{{item.name}}</li>
+                    </RouterLink>
+                </ul>
             </div>
-            <!-- 菜单列表 -->
-            <ul class="nav">
-                <li class="nav-item nav-item--active">首页</li>
-                <li class="nav-item">问答</li>
-                <li class="nav-item">知识库</li>
-                <li class="nav-item">广场</li>
-                <li class="nav-item">关于我们</li>
-            </ul>
         </div>
-        <div class="content flex-grow p-8">
+        <div class="content flex-grow w-max p-8">
             <RouterView></RouterView>
         </div>
     </div>

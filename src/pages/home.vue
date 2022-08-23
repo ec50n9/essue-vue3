@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="title">
+    <div class="title mt-8">
         <h2 class="text-5xl text-gray-700">别来无恙！</h2>
         <p class="mt-4 mb-8 text-lg text-gray-500">快来看看今天有什么新鲜事吧！</p>
     </div>
