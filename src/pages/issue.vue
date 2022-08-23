@@ -42,6 +42,37 @@ const dataList: IssueListItem[] = [
         ],
         voteCount: 76,
         commentCount: 11
+    }, {
+        type: 'software',
+        title: 'office 2010 突然打不开，报错',
+        preview: 'office 2010 突然打不开，报错',
+        date: '三天前',
+        tags: [
+            { text: '🔥 着急', class: 'tag--red' },
+            { text: '#有偿', class: 'tag--green' }
+        ],
+        voteCount: 76,
+        commentCount: 11
+    }, {
+        type: 'hardware',
+        title: '电脑开机蓝屏，重启也一样',
+        preview: '电脑开机蓝屏，重启也一样',
+        date: '片刻前',
+        tags: [
+            { text: '#有偿', class: 'tag--green' }
+        ],
+        voteCount: 76,
+        commentCount: 11
+    }, {
+        type: 'software',
+        title: '电脑连网线但无法上网',
+        date: '两个小时前',
+        tags: [
+            { text: '#多人遇到', class: 'tag--yellow' },
+            { text: '#有难度', class: 'tag--red' }
+        ],
+        voteCount: 76,
+        commentCount: 11
     }
 ]
 
