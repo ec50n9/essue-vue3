@@ -73,3 +73,21 @@ const navList = [
         </div>
     </div>
 </template>
+
+<style scoped>
+.nav {
+    @apply flex flex-col space-y-4;
+}
+
+.nav-item {
+    @apply px-5 py-2 rounded-lg cursor-pointer duration-300 text-gray-500;
+}
+
+.nav-item:hover {
+    @apply bg-indigo-100;
+}
+
+.nav-item--active {
+    @apply bg-indigo-100 text-blue-700;
+}
+</style>
