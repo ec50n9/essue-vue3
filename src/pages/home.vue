@@ -63,7 +63,9 @@ const type2Tag = (type: MixtureListItem['type']) => {
         <h2 class="text-5xl text-gray-700">别来无恙！</h2>
         <p class="mt-4 mb-8 text-lg text-gray-500">快来看看今天有什么新鲜事吧！</p>
     </div>
-    <div class="banner h-64 rounded-xl bg-blue-100"></div>
+    <div class="banner h-64 rounded-xl bg-blue-100 overflow-hidden shadow-lg shadow-gray-300">
+        <img class="w-full h-full object-cover" src="/nature.jpeg" alt="banner">
+    </div>
     <ul class="list mt-4">
         <li v-for="(item, index) in dataList" :key="index">
             <div class="card py-4 flex flex-col gap-4">
