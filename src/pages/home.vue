@@ -6,7 +6,7 @@ const dataList: MixtureListItem[] = [
     type: {text: '知识', class: 'tag--blue'},
     title: '如何评价全新的 ARC 浏览器，号称要重新定义网页？',
     preview: '少数派： TL;DR <strong>优点（The good）</strong> 对标签过载问题提出了新颖的方案 交互设计细致入微，重引导而非强迫 网页修改功能有黑客精神和早期浏览器遗风 非常美貌（取决于你的偏好） 缺点（The bad）过于美貌（…',
-    covers:['temp.png', 'vite.svg', 'nature.jpeg'],
+    covers:['sunset.jpeg', 'temp.png', 'vite.svg'],
     author:'ec50n9',
     date: '三天前',
     tags: [
