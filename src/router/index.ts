@@ -5,6 +5,7 @@ import Issue from '../pages/issue.vue'
 import Wiki from '../pages/wiki.vue'
 import Square from '../pages/square.vue'
 import About from '../pages/about.vue'
+import Login from '../pages/Login.vue'
 
 const routes = [
     {
@@ -28,6 +29,9 @@ const routes = [
                 component: About
             }
         ]
+    },{
+        path:'/login',
+        component: Login
     }
 ]
 
