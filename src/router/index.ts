@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Main from '../pages/main.vue'
 import Home from '../pages/home.vue'
-import Issue from '../pages/issue.vue'
+import Issue from '../pages/Issue.vue'
 import Wiki from '../pages/wiki.vue'
 import Square from '../pages/square.vue'
 import About from '../pages/about.vue'
 import Login from '../pages/Login.vue'
+import IssueMain from '../pages/issue/IssueMain.vue'
+import IssueLaunch from '../pages/issue/IssueLaunch.vue'
 
 const routes = [
     {
@@ -17,7 +19,16 @@ const routes = [
                 component: Home
             },{
                 path: 'issues',
-                component: Issue
+                component: Issue,
+                children: [
+                    {
+                        path: '',
+                        component: IssueMain
+                    }, {
+                        path: 'launch',
+                        component: IssueLaunch
+                    }
+                ]
             },{
                 path:'wiki',
                 component: Wiki

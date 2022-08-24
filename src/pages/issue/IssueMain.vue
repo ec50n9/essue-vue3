@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import EssueItem from "../components/EssueItem.vue";
+import EssueItem from "../../components/EssueItem.vue";
 
 const dataList: MixtureListItem[] = [
   {
@@ -83,7 +83,7 @@ const dataList: MixtureListItem[] = [
     </div>
     <div class="h-12 w-0.5 bg-indigo-300"></div>
     <div class="grow text-center">
-      <RouterLink to="/issues">
+      <RouterLink to="/issues/launch">
         <button class="px-8 py-4 rounded-md bg-blue-500 text-gray-100 hover:ring-4">发起问题</button>
       </RouterLink>
     </div>
@@ -95,3 +95,7 @@ const dataList: MixtureListItem[] = [
     </li>
   </ul>
 </template>
+
+<style scoped>
+
+</style>
