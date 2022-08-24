@@ -5,7 +5,9 @@ const props = defineProps<{ data: MixtureListItem }>()
 <template>
   <div class="card py-4 flex flex-col gap-4">
     <h3 class="text-xl"><span v-if="data.type" class="tag tag--normal"
-                              :class="data.type.class||'tag--blue'">{{ data.type.text || data.type }}</span>
+                              :class="typeof data.type==='string'?'tag--blue': data.type.class">{{
+        typeof data.type === 'string' ? data.type : data.type.text
+      }}</span>
       {{ data.title }}</h3>
     <!--封面和预览内容-->
     <div v-if="data.covers||data.preview" class="flex gap-4">
@@ -21,8 +23,8 @@ const props = defineProps<{ data: MixtureListItem }>()
       <div class="tag tag--gray">{{ data.date }}</div>
       <div v-if="data.author" class="w-fit tag tag--gray text-gray-500">@{{ data.author }}</div>
       <div class="flex-grow"></div>
-      <div v-for="tag in data.tags" class="tag tag--red" :class="tag.class || 'tag--blue'">
-        {{ tag.text || tag }}
+      <div v-for="tag in data.tags" class="tag tag--red" :class="typeof tag==='string'?'tag--blue':tag.class">
+        {{ typeof tag === 'string' ? tag : tag.text }}
       </div>
       <div class="tag tag--blue">👍 {{ data.voteCount }} 点赞</div>
       <div class="tag tag--yellow">💬 {{ data.commentCount }} 评论</div>
