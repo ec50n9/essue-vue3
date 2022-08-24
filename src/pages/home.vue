@@ -39,6 +39,43 @@ const dataList: MixtureListItem[] = [
     ],
     voteCount: 76,
     commentCount: 11
+  },{
+    type: {text: '知识', class: 'tag--blue'},
+    title: '如何评价全新的 ARC 浏览器，号称要重新定义网页？',
+    preview: '少数派： TL;DR <strong>优点（The good）</strong> 对标签过载问题提出了新颖的方案 交互设计细致入微，重引导而非强迫 网页修改功能有黑客精神和早期浏览器遗风 非常美貌（取决于你的偏好） 缺点（The bad）过于美貌（…',
+    covers:['sunset.jpeg', 'temp.png', 'vite.svg'],
+    author:'ec50n9',
+    date: '三天前',
+    tags: [
+      {text: '🔥 热门', class: 'tag--red'},
+      {text: '#日落', class: 'tag--green'},
+      '#篮球'
+    ],
+    voteCount: 76,
+    commentCount: 11
+  }, {
+    type: {text: '问题', class: 'tag--red'},
+    title: '如何评价全新的 ARC 浏览器，号称要重新定义网页？',
+    preview: '少数派： TL;DR <strong>优点（The good）</strong> 对标签过载问题提出了新颖的方案 交互设计细致入微，重引导而非强迫 网页修改功能有黑客精神和早期浏览器遗风 非常美貌（取决于你的偏好） 缺点（The bad）过于美貌（…',
+    covers:['nature.jpeg'],
+    date: '三天前',
+    tags: [
+      {text: '#日落', class: 'tag--green'}
+    ],
+    voteCount: 76,
+    commentCount: 11
+  }, {
+    type: {text: '广场', class: 'tag--green'},
+    title: '如何评价全新的 ARC 浏览器，号称要重新定义网页？',
+    preview: '少数派： TL;DR <strong>优点（The good）</strong> 对标签过载问题提出了新颖的方案 交互设计细致入微，重引导而非强迫 网页修改功能有黑客精神和早期浏览器遗风 非常美貌（取决于你的偏好） 缺点（The bad）过于美貌（…',
+    date: '三天前',
+    tags: [
+      {text: '#广青', class: 'tag--green'},
+      '#篮球',
+      {text: '#烧烤', class: 'tag--red'}
+    ],
+    voteCount: 76,
+    commentCount: 11
   }
 ]
 </script>

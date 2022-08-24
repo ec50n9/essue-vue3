@@ -53,8 +53,8 @@ const navList = [
   </header>
   <div class="wrapper container mx-auto flex gap-4">
     <!-- 侧边栏 -->
-    <div class="side-bar flex-shrink-0 w-3/12 bg-white">
-      <div class="sticky top-16 pt-8">
+    <div class="side-bar flex-shrink-0 w-3/12 xl:w-2/12 bg-white">
+      <div class="sticky top-16 pt-16">
         <!-- 个人信息卡片 -->
         <div class="mb-8">
           <div class="rounded-lg bg-blue-100 p-4">
@@ -74,6 +74,17 @@ const navList = [
     </div>
     <div class="content flex-grow w-max p-8">
       <RouterView></RouterView>
+    </div>
+    <!--右侧栏-->
+    <div class="hidden xl:block w-2/12 flex-shrink-0">
+      <div class="sticky top-16 pt-16 space-y-8">
+        <div class="p-8 rounded-lg bg-blue-100">
+          <h2 class="text-xl">技术人员</h2>
+          <ul>
+
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
