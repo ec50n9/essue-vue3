@@ -24,7 +24,10 @@ const loginHandler = ()=>{
     <div>
       <Button class="w-full" @click="loginHandler">登录</Button>
       <p class="my-2 text-center text-gray-500 text-sm">没有账号？你可以👇</p>
-      <Button class="w-full" outline>注册</Button>
+      <div class="flex gap-4">
+        <Button class="flex-grow" outline @click="$router.back()">取消</Button>
+        <Button class="flex-grow" outline>注册</Button>
+      </div>
     </div>
   </div>
 </template>
