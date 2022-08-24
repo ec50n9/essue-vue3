@@ -12,8 +12,6 @@
     "@wangeditor/editor": "^5.1.14",
     "@wangeditor/editor-for-vue": "^5.1.12",
     "autoprefixer": "^10.4.8",
-    "flowbite": "^1.5.2",
-    "flowbite-vue": "^0.0.5",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",
     "vee-validate": "^4.6.6",

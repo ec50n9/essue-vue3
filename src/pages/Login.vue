@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import FloatingLabel from "../components/FloatingLabel.vue";
-import {Button, Toast, Tooltip} from 'flowbite-vue';
 import {ref} from "vue";
 
 const loginForm = ref({
@@ -25,8 +24,8 @@ const loginHandler = ()=>{
       <Button class="w-full" @click="loginHandler">登录</Button>
       <p class="my-2 text-center text-gray-500 text-sm">没有账号？你可以👇</p>
       <div class="flex gap-4">
-        <Button class="flex-grow" outline @click="$router.back()">取消</Button>
-        <Button class="flex-grow" outline>注册</Button>
+        <Button class="flex-grow" @click="$router.back()">取消</Button>
+        <Button class="flex-grow">注册</Button>
       </div>
     </div>
   </div>
