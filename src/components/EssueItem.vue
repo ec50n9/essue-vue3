@@ -4,11 +4,11 @@ const props = defineProps<{ data: MixtureListItem }>()
 
 <template>
   <div class="card py-4 flex flex-col gap-4">
-    <h3 class="text-xl"><span class="tag tag--normal"
+    <h3 class="text-xl"><span v-if="data.type" class="tag tag--normal"
                               :class="data.type.class||'tag--blue'">{{ data.type.text || data.type }}</span>
       {{ data.title }}</h3>
     <!--封面和预览内容-->
-    <div class="flex gap-4">
+    <div v-if="data.covers||data.preview" class="flex gap-4">
       <div v-if="data.covers" class="flex-shrink-0 flex-grow flex justify-between gap-4">
         <img v-for="(cover, index) in data.covers" :key="index" :src="cover" :alt="cover"
              class="flex-grow h-32 object-cover rounded-xl shadow shadow-blue-100">

@@ -1,5 +1,5 @@
 interface MixtureListItem {
-    type: string | { text: string, class: string }
+    type?: string | { text: string, class: string }
     title: string
     preview?: string
     covers?: string[]
