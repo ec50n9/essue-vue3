@@ -3,7 +3,7 @@ const props = defineProps<{ data: MixtureListItem }>()
 </script>
 
 <template>
-  <div class="card py-4 flex flex-col gap-4">
+  <div class="card py-4 flex flex-col gap-2">
     <h3 class="text-xl"><span class="tag tag--normal"
                               :class="data.type.class||'tag--blue'">{{ data.type.text || data.type }}</span>
       {{ data.title }}</h3>
@@ -12,6 +12,7 @@ const props = defineProps<{ data: MixtureListItem }>()
     </p>
     <div class="flex items-center gap-3 text-gray-500">
       <div class="tag tag--gray">{{ data.date }}</div>
+      <div v-if="data.author" class="w-fit tag tag--gray text-gray-500">@{{data.author}}</div>
       <div class="flex-grow"></div>
       <div v-for="tag in data.tags" class="tag tag--red" :class="tag.class || 'tag--blue'">
         {{ tag.text || tag }}
