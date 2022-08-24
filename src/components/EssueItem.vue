@@ -7,7 +7,7 @@ const props = defineProps<{ data: MixtureListItem }>()
     <h3 class="text-xl"><span class="tag tag--normal"
                               :class="data.type.class||'tag--blue'">{{ data.type.text || data.type }}</span>
       {{ data.title }}</h3>
-    <p class="text-gray-500 tracking-wide">
+    <p v-if="data.preview" class="text-gray-500 tracking-wide">
       <span v-html="data.preview"></span>
     </p>
     <div class="flex items-center gap-3 text-gray-500">
