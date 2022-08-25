@@ -12,6 +12,7 @@
     "@wangeditor/editor": "^5.1.14",
     "@wangeditor/editor-for-vue": "^5.1.12",
     "autoprefixer": "^10.4.8",
+    "nprogress": "^0.2.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",
     "vee-validate": "^4.6.6",
@@ -19,6 +20,7 @@
     "vue-router": "4"
   },
   "devDependencies": {
+    "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^3.0.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
