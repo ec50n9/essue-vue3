@@ -8,6 +8,7 @@ import About from '../pages/about.vue'
 import Login from '../pages/Login.vue'
 import IssueMain from '../pages/issue/IssueMain.vue'
 import IssueLaunch from '../pages/issue/IssueLaunch.vue'
+import IssueDetails from '../pages/issue/IssueDetails.vue'
 
 const routes = [
     {
@@ -27,6 +28,10 @@ const routes = [
                     }, {
                         path: 'launch',
                         component: IssueLaunch
+                    }, {
+                        path: ':id',
+                        component: IssueDetails,
+                        props: true
                     }
                 ]
             },{
