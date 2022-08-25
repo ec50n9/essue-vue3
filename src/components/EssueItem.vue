@@ -1,14 +1,17 @@
 <script setup lang="ts">
+import EcTag from "./EcTag.vue";
+
 const props = defineProps<{ data: MixtureListItem }>()
 </script>
 
 <template>
   <div class="card py-6 flex flex-col gap-4">
-    <h3 class="text-xl"><span v-if="data.type" class="tag tag--normal"
-                              :class="typeof data.type==='string'?'tag--blue': data.type.class">{{
-        typeof data.type === 'string' ? data.type : data.type.text
-      }}</span>
-      {{ data.title }}</h3>
+    <h3 class="text-xl">
+      <EcTag v-if="data.type" size="md" :color="typeof data.type==='string'?'blue': data.type.color">
+        {{ typeof data.type === 'string' ? data.type : data.type.text }}
+      </EcTag>
+      <RouterLink :to="'/issues/'+data.id" class="ml-2">{{ data.title }}</RouterLink>
+    </h3>
     <!--封面和预览内容-->
     <div v-if="data.covers||data.preview" class="flex gap-4">
       <div v-if="data.covers" class="flex-shrink-0 flex-grow flex justify-between gap-4">
@@ -23,11 +26,11 @@ const props = defineProps<{ data: MixtureListItem }>()
       <div class="tag tag--gray">{{ data.date }}</div>
       <div v-if="data.author" class="w-fit tag tag--gray text-gray-500">@{{ data.author }}</div>
       <div class="flex-grow"></div>
-      <div v-for="tag in data.tags" class="tag tag--red" :class="typeof tag==='string'?'tag--blue':tag.class">
+      <EcTag v-for="tag in data.tags" size="sm" :color="typeof tag==='string'?'blue':tag.color">
         {{ typeof tag === 'string' ? tag : tag.text }}
-      </div>
-      <div class="tag tag--blue">👍 {{ data.voteCount }} 点赞</div>
-      <div class="tag tag--yellow">💬 {{ data.commentCount }} 评论</div>
+      </EcTag>
+      <EcTag size="sm" color="blue">👍 {{ data.voteCount }} 点赞</EcTag>
+      <EcTag size="sm" color="yellow">💬 {{ data.commentCount }} 评论</EcTag>
     </div>
   </div>
   <div class="h-0.5 bg-gray-100 rounded-full"></div>

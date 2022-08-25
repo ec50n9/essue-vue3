@@ -10,8 +10,8 @@ const dataList: MixtureListItem[] = [
     author:'ec50n9',
     date: '三天前',
     tags: [
-      {text: '🔥 热门', class: 'tag--red'},
-      {text: '#日落', class: 'tag--green'},
+      {text: '🔥 热门', color: 'red'},
+      {text: '#日落', color: 'green'},
       '#篮球'
     ],
     voteCount: 76,
@@ -22,7 +22,7 @@ const dataList: MixtureListItem[] = [
     covers:['nature.jpeg'],
     date: '三天前',
     tags: [
-      {text: '#日落', class: 'tag--green'}
+      {text: '#日落', color: 'green'}
     ],
     voteCount: 76,
     commentCount: 11
@@ -30,9 +30,9 @@ const dataList: MixtureListItem[] = [
     title: '今天上课忘记带书了，被老师点名，尴尬死😅',
     date: '三天前',
     tags: [
-      {text: '#广青', class: 'tag--green'},
+      {text: '#广青', color: 'green'},
       '#篮球',
-      {text: '#烧烤', class: 'tag--red'}
+      {text: '#烧烤', color: 'red'}
     ],
     voteCount: 76,
     commentCount: 11
