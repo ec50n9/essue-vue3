@@ -60,7 +60,7 @@ const navList = [
           <div class="rounded-lg bg-blue-100 p-4">
             <h3 class="text-gray-500">今日活力：</h3>
             <p class="mt-2 text-center text-xl font-bold text-gray-500">999</p>
-            <!--拒绝打标签？恰恰相反，我们恨不得通过一堆标签来让你快点了解我们身边的事情！-->
+            <!--拒绝打标签？恰恰相反，我们希望通过标签让你快速了解身边的事情！-->
           </div>
         </div>
         <!-- 菜单列表 -->
