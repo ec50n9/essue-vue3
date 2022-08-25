@@ -60,6 +60,7 @@ const navList = [
           <div class="rounded-lg bg-blue-100 p-4">
             <h3 class="text-gray-500">今日活力：</h3>
             <p class="mt-2 text-center text-xl font-bold text-gray-500">999</p>
+            <!--拒绝打标签？恰恰相反，我们恨不得通过一堆标签来让你快点了解我们身边的事情！-->
           </div>
         </div>
         <!-- 菜单列表 -->
@@ -76,7 +77,7 @@ const navList = [
       <RouterView></RouterView>
     </div>
     <!--右侧栏-->
-    <div class="hidden xl:block w-2/12 flex-shrink-0">
+    <div class="hidden xl:block w-2/12 2xl:w-3/12 flex-shrink-0">
       <div class="sticky top-16 pt-16 space-y-8">
         <div class="p-8 rounded-lg bg-blue-100">
           <h2 class="text-xl">技术人员</h2>
