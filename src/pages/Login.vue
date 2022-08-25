@@ -53,6 +53,8 @@ const registerHandler = () => {
                        place-holder="账号"/>
         <FloatingLabel class="bg-white rounded-lg" name="password" type="outlined" v-model="loginForm.password"
                        place-holder="密码" cover/>
+        <FloatingLabel class="bg-white rounded-lg" name="username" type="outlined" v-model="loginForm.username"
+                       place-holder="昵称"/>
         <div>
           <Button type="orange" class="w-full" @click="loginHandler">注册</Button>
           <p class="my-2 text-center text-gray-500 text-sm">已经有账号啦？你可以👇</p>
@@ -78,7 +80,7 @@ const registerHandler = () => {
 }
 
 .flip-b {
-  @apply absolute inset-0;
+  @apply absolute inset-x-0 top-0;
   transform: rotateY(-180deg);
 }
 
