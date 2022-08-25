@@ -3,7 +3,7 @@ const props = defineProps<{ data: MixtureListItem }>()
 </script>
 
 <template>
-  <div class="card py-4 flex flex-col gap-4">
+  <div class="card py-6 flex flex-col gap-4">
     <h3 class="text-xl"><span v-if="data.type" class="tag tag--normal"
                               :class="typeof data.type==='string'?'tag--blue': data.type.class">{{
         typeof data.type === 'string' ? data.type : data.type.text
@@ -30,6 +30,7 @@ const props = defineProps<{ data: MixtureListItem }>()
       <div class="tag tag--yellow">💬 {{ data.commentCount }} 评论</div>
     </div>
   </div>
+  <div class="h-0.5 bg-gray-100 rounded-full"></div>
 </template>
 
 <style scoped>

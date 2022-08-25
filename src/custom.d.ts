@@ -1,7 +1,7 @@
 declare module 'nprogress'
 
 interface MixtureListItem {
-    id: string
+    id?: string
     type?: string | { text: string, class: string }
     title: string
     preview?: string
