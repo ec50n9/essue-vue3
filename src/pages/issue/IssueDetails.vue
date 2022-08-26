@@ -30,7 +30,7 @@ const issue = {
   <!--分割线-->
   <div class="h-1 my-8 bg-gray-100 rounded-full"></div>
   <!--作者标签-->
-  <div class="mt-10 flex flex-wrap items-center justify-end gap-x-4">
+  <div class="mb-8 flex flex-wrap items-center justify-end gap-x-4">
     <img class="inline-block align-middle w-12 h-12 rounded-full ring-4 ring-gray-100" :src="issue.author.avatar"
          alt="avatar">
     <EcTag size="lg" color="blue">🧑‍💻 {{ issue.author.nickname }}</EcTag>
@@ -45,10 +45,18 @@ const issue = {
     </div>
   </div>
   <!--文章内容-->
-  <article class="mt-8 text-lg" v-html="issue.content"/>
+  <article class="prose lg:prose-xl" v-html="issue.content"/>
   <!--分割线-->
   <div class="h-1 my-8 bg-gray-100 rounded-full"></div>
-  <!--评论-->
+  <!--评论列表-->
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <!--评论框-->
   <form>
     <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
       <div class="py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
