@@ -11,28 +11,28 @@ class Toast {
         document.body.appendChild(this.dom)
     }
 
-    info(message: string, duration: number) {
+    info(message: string, duration: number = 3000) {
         this.create({
             type: 'info',
             message
         }, duration)
     }
 
-    success(message: string, duration: number) {
+    success(message: string, duration: number = 3000) {
         this.create({
             type: 'success',
             message
         }, duration)
     }
 
-    error(message: string, duration: number) {
+    error(message: string, duration: number = 3000) {
         this.create({
             type: 'error',
             message
         }, duration)
     }
 
-    warn(message: string, duration: number) {
+    warning(message: string, duration: number = 3000) {
         this.create({
             type: 'warn',
             message
