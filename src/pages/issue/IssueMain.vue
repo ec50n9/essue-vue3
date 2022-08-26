@@ -1,5 +1,22 @@
 <script setup lang="ts">
 import EssueItem from "../../components/EssueItem.vue";
+import issueService from "../../http/IssueService";
+import {ref} from "vue";
+
+const issueList = ref<MixtureListItem[]>([])
+
+issueService.findAll().then(({data})=>{
+  data.data.forEach(issue=>{
+    console.log(issue)
+    issueList.value.push({
+      type:{text:issue.categoryName, color:'blue'},
+      title: issue.title,
+      date: '三天前',
+      voteCount: 76,
+      commentCount: 11
+    })
+  })
+})
 
 const dataList: MixtureListItem[] = [
   {
@@ -90,7 +107,7 @@ const dataList: MixtureListItem[] = [
   </div>
   <!-- 问题列表 -->
   <ul class="list mt-4">
-    <li v-for="(item, index) in dataList" :key="index">
+    <li v-for="(item, index) in issueList" :key="index">
       <EssueItem :data="item"></EssueItem>
     </li>
   </ul>
