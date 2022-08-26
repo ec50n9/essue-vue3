@@ -2,6 +2,7 @@
 import Button from "../components/EcButton.vue"
 import FloatingLabel from "../components/FloatingLabel.vue";
 import {ref} from "vue";
+import Toast from "../components/toast";
 
 const mode = ref<'login' | 'register'>('login')
 
@@ -12,6 +13,11 @@ const loginForm = ref({
 
 const loginHandler = () => {
   console.log(loginForm.value)
+
+  Toast.info("真的是叼你妈的了，哈哈哈还疯狂按扽况且就饿哦陈请叫我狂饭啊赛况烦哦去玩", 3000)
+  Toast.success("真的是叼你妈的了，哈哈哈还疯狂按扽况且就饿哦陈请叫我狂饭啊赛况烦哦去玩", 3000)
+  Toast.error("真的是叼你妈的了，哈哈哈还疯狂按扽况且就饿哦陈请叫我狂饭啊赛况烦哦去玩", 3000)
+  Toast.warn("真的是叼你妈的了，哈哈哈还疯狂按扽况且就饿哦陈请叫我狂饭啊赛况烦哦去玩", 3000)
 }
 const registerHandler = () => {
 
@@ -49,11 +55,11 @@ const registerHandler = () => {
           <h1 class="mb-2 text-3xl text-gray-700">初次见面！</h1>
           <p class="text-gray-500">👣 在这里留下你的足迹叭～</p>
         </div>
-        <FloatingLabel class="bg-white rounded-lg" name="username" type="outlined" v-model="loginForm.username"
+        <FloatingLabel class="bg-white rounded-lg" name="reg_username" type="outlined" v-model="loginForm.username"
                        place-holder="账号"/>
-        <FloatingLabel class="bg-white rounded-lg" name="password" type="outlined" v-model="loginForm.password"
+        <FloatingLabel class="bg-white rounded-lg" name="reg_password" type="outlined" v-model="loginForm.password"
                        place-holder="密码" cover/>
-        <FloatingLabel class="bg-white rounded-lg" name="username" type="outlined" v-model="loginForm.username"
+        <FloatingLabel class="bg-white rounded-lg" name="reg_nickname" type="outlined" v-model="loginForm.username"
                        place-holder="昵称"/>
         <div>
           <Button type="orange" class="w-full" @click="loginHandler">注册</Button>
