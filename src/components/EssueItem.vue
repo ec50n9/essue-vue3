@@ -23,8 +23,8 @@ const props = defineProps<{ data: MixtureListItem }>()
       </p>
     </div>
     <div class="flex items-center gap-3 text-gray-500">
-      <div class="tag tag--gray">{{ data.date }}</div>
-      <div v-if="data.author" class="w-fit tag tag--gray text-gray-500">@{{ data.author }}</div>
+      <EcTag size="sm" color="gray">{{data.date}}</EcTag>
+      <EcTag v-if="data.author" size="sm" color="gray">@{{ data.author }}</EcTag>
       <div class="flex-grow"></div>
       <EcTag v-for="tag in data.tags" size="sm" :color="typeof tag==='string'?'blue':tag.color">
         {{ typeof tag === 'string' ? tag : tag.text }}
