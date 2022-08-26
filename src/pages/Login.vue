@@ -2,17 +2,29 @@
 import Button from "../components/EcButton.vue"
 import FloatingLabel from "../components/FloatingLabel.vue";
 import {ref} from "vue";
-import Toast from "../components/toast";
+import authService from "../http/AuthService";
+import {useUserStore} from "../stores/userStore";
+import toast from "../components/toast";
+import router from "../router";
 
 const mode = ref<'login' | 'register'>('login')
 
+const userStore = useUserStore()
 const loginForm = ref({
   username: '',
   password: ''
 })
 
 const loginHandler = () => {
-  console.log(loginForm.value)
+  authService.login(loginForm.value).then(res => {
+    if (res.data.success) {
+      toast.success('登录成功！')
+      userStore.setToken(res.data.data.tokenValue)
+      router.back()
+    } else {
+      toast.error(res.data.message)
+    }
+  })
 }
 const registerHandler = () => {
 
