@@ -13,11 +13,6 @@ const loginForm = ref({
 
 const loginHandler = () => {
   console.log(loginForm.value)
-
-  Toast.info("真的是叼你妈的了，哈哈哈还疯狂按扽况且就饿哦陈请叫我狂饭啊赛况烦哦去玩", 3000)
-  Toast.success("真的是叼你妈的了，哈哈哈还疯狂按扽况且就饿哦陈请叫我狂饭啊赛况烦哦去玩", 3000)
-  Toast.error("真的是叼你妈的了，哈哈哈还疯狂按扽况且就饿哦陈请叫我狂饭啊赛况烦哦去玩", 3000)
-  Toast.warn("真的是叼你妈的了，哈哈哈还疯狂按扽况且就饿哦陈请叫我狂饭啊赛况烦哦去玩", 3000)
 }
 const registerHandler = () => {
 

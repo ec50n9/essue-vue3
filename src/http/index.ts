@@ -1,6 +1,7 @@
 import Axios from "axios";
 import router from "../router";
 import {useUserStore} from "../stores/userStore";
+import toast from "../components/toast";
 
 const client = Axios.create({
     baseURL: 'http://localhost:8080/api',
@@ -17,7 +18,7 @@ client.interceptors.request.use(config => {
     console.log('请求参数: ', config)
     return config
 }, error => {
-    // message.error(error.message)
+    toast.error(error.message)
     return Promise.reject(error)
 })
 
@@ -27,18 +28,18 @@ client.interceptors.response.use(response => {
     if (!success) {
         switch (code) {
             case 3001:
-                // message.warning("请登录!")
+                toast.warning("请登录!")
                 router.push("/login")
                 break
             default:
-                // message.error(msg)
+                toast.error(msg)
                 break
         }
         return Promise.reject(Error(msg))
     }
     return response
 }, error => {
-    // message.error(error.message)
+    toast.error(error.message)
     return Promise.reject(error)
 })
 
