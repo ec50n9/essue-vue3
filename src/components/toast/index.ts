@@ -5,7 +5,7 @@ class Toast {
     dom = document.createElement("div")
 
     constructor() {
-        this.dom.style.position = 'absolute'
+        this.dom.style.position = 'fixed'
         this.dom.style.top = '2rem'
         this.dom.style.right = '100px'
         document.body.appendChild(this.dom)
