@@ -22,7 +22,7 @@ let issue = ref({
   voteCount: 0,
   commentCount: 0
 })
-let comments = ref<any[]>([])
+let comments = ref<{ id:string, authorName: string, content:string, createdTime: string }[]>([])
 
 const back = {
   title: '电脑开始蓝屏，重启也一样',
@@ -45,9 +45,10 @@ const back = {
 const editingComment = ref('')
 // 发送评论
 const commentSubmit = async () => {
-  console.log(editingComment.value)
   const {data: {data: _comment}} = await issueService.createComment(props.id, editingComment.value)
-  comments.value.push(_comment)
+  comments.value.push({id: _comment, authorName: _comment.author.nickname, content: _comment.content, createdTime: _comment.createdTime})
+
+  editingComment.value = ''
 }
 
 const init = async () => {
@@ -65,9 +66,7 @@ onMounted(init)
 
 <template>
   <!--标题-->
-  <h1 class="mt-8 text-5xl text-gray-700">{{ issue.title }}</h1>
-  <!--分割线-->
-  <div class="h-1 my-8 bg-gray-100 rounded-full"></div>
+  <h1 class="my-8 text-5xl text-gray-700">{{ issue.title }}</h1>
   <!--作者标签-->
   <div class="mb-8 flex flex-wrap items-center justify-end gap-x-4">
     <img class="inline-block align-middle w-12 h-12 rounded-full ring-4 ring-gray-100" :src="issue.author.avatar"
@@ -86,10 +85,19 @@ onMounted(init)
   <!--文章内容-->
   <article class="prose lg:prose-xl" v-html="issue.content"/>
   <!--分割线-->
-  <div class="h-1 my-8 bg-gray-100 rounded-full"></div>
+  <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700">
   <!--评论列表-->
-  <ul>
-    <li v-for="comment in comments" :key="comment.id">{{ comment.content }}</li>
+  <ul class="my-8">
+    <li v-for="comment in comments" :key="comment.id">
+      <div class="flex flex-col items-start gap-3">
+        <p class="text-gray-700">{{ comment.content }}</p>
+        <p class="space-x-2">
+          <EcTag color="gray" size="sm">{{Time.getFormatTime(new Date(comment.createdTime).getTime())}}</EcTag>
+          <EcTag color="gray" size="sm">@{{comment.authorName}}</EcTag>
+        </p>
+      </div>
+      <hr class="my-4 h-px bg-gray-200 border-0 dark:bg-gray-700">
+    </li>
   </ul>
   <!--评论框-->
   <CommentBox v-model="editingComment" @onSubmit="commentSubmit"/>
