@@ -1,11 +1,27 @@
 <script setup lang="ts">
 import EcTag from "../../components/EcTag.vue";
+import {onMounted, ref} from "vue";
+import issueService from "../../http/IssueService";
 
 const props = defineProps<{
   id: string
 }>()
 
-const issue = {
+const issue = ref({
+  title: '',
+  content: '',
+  author: {
+    username: '',
+    nickname: '',
+    avatar: ''
+  },
+  createdTime: '',
+  tags: [],
+  voteCount: 0,
+  commentCount: 0
+})
+
+const back = {
   title: '电脑开始蓝屏，重启也一样',
   content: '少数派： TL;DR <strong>优点（The good）</strong> 对标签过载问题提出了新颖的方案 交互设计细致入微，重引导而非强迫 网页修改功能有黑客精神和早期浏览器遗风 非常美貌（取决于你的偏好） 缺点（The bad）过于美貌（…',
   author: {
@@ -22,6 +38,13 @@ const issue = {
   voteCount: 76,
   commentCount: 11
 }
+
+const init = async ()=>{
+  const {data:{data: res}} = await issueService.findOne(props.id)
+  console.log('当前问题：', res)
+  issue.value = res
+}
+onMounted(init)
 </script>
 
 <template>
