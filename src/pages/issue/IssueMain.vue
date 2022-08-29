@@ -7,7 +7,7 @@ import {Time} from "../../utils/time";
 const issueList = ref<MixtureListItem[]>([])
 
 issueService.findAll().then(({data})=>{
-  data.data.forEach(issue=>{
+  data.data.forEach((issue: { id: any; categoryName: any; title: any; launchedAt: string | number | Date; })=>{
     console.log(issue)
     issueList.value.push({
       id: issue.id,
