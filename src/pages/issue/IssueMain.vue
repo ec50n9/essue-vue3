@@ -7,15 +7,14 @@ import {Time} from "../../utils/time";
 const issueList = ref<MixtureListItem[]>([])
 
 issueService.findAll().then(({data})=>{
-  data.data.forEach((issue: { id: any; categoryName: any; title: any; launchedAt: string | number | Date; })=>{
-    console.log(issue)
+  data.data.forEach((issue: { commentCount: number; voteCount: number; id: any; categoryName: any; title: any; launchedAt: string | number | Date; })=>{
     issueList.value.push({
       id: issue.id,
       type:{text:issue.categoryName, color:'blue'},
       title: issue.title,
       date: Time.getFormatTime(new Date(issue.launchedAt).getTime()),
-      voteCount: 76,
-      commentCount: 11
+      voteCount: issue.voteCount,
+      commentCount: issue.commentCount
     })
   })
 })
