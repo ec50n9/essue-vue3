@@ -5,12 +5,12 @@ defineEmits(['update:modelValue', 'onSubmit'])
 
 <template>
   <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-    <div class="py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
+    <div class="bg-white rounded-t-lg dark:bg-gray-800">
       <label for="comment" class="sr-only">你的评论</label>
       <textarea id="comment" rows="4"
-                class="px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                class="px-4 py-3 rounded-t-lg -mb-2 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                 placeholder="聊聊你的见解..." :value="modelValue"
-                @input="$emit('update:modelValue', $event.target.value)" required></textarea>
+                @input="$emit('update:modelValue', $event.target.value)" required/>
     </div>
     <div class="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
       <button
