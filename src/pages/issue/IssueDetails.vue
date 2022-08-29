@@ -2,6 +2,7 @@
 import EcTag from "../../components/EcTag.vue";
 import {onMounted, ref} from "vue";
 import issueService from "../../http/IssueService";
+import {Time} from "../../utils/time";
 
 const props = defineProps<{
   id: string
@@ -15,7 +16,7 @@ const issue = ref({
     nickname: '',
     avatar: ''
   },
-  createdTime: '',
+  launchedAt: '',
   tags: [],
   voteCount: 0,
   commentCount: 0
@@ -41,7 +42,7 @@ const back = {
 
 const init = async ()=>{
   const {data:{data: res}} = await issueService.findOne(props.id)
-  console.log('当前问题：', res)
+  res.launchedAt = Time.getFormatTime(new Date(res.launchedAt).getTime())
   issue.value = res
 }
 onMounted(init)
@@ -57,7 +58,7 @@ onMounted(init)
     <img class="inline-block align-middle w-12 h-12 rounded-full ring-4 ring-gray-100" :src="issue.author.avatar"
          alt="avatar">
     <EcTag size="lg" color="blue">🧑‍💻 {{ issue.author.nickname }}</EcTag>
-    <EcTag size="lg" color="yellow">🕒 {{ issue.createdTime }}</EcTag>
+    <EcTag size="lg" color="yellow">🕒 {{ issue.launchedAt }}</EcTag>
     <div class="flex-grow w-1/12"></div>
     <EcTag size="md" color="blue">👍 {{ issue.voteCount }} 点赞</EcTag>
     <EcTag size="md" color="yellow">💬 {{ issue.commentCount }} 评论</EcTag>
