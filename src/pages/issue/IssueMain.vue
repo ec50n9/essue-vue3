@@ -9,6 +9,7 @@ issueService.findAll().then(({data})=>{
   data.data.forEach(issue=>{
     console.log(issue)
     issueList.value.push({
+      id: issue.id,
       type:{text:issue.categoryName, color:'blue'},
       title: issue.title,
       date: '三天前',
