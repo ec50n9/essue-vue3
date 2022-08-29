@@ -2,6 +2,7 @@
 import EssueItem from "../../components/EssueItem.vue";
 import issueService from "../../http/IssueService";
 import {ref} from "vue";
+import {Time} from "../../utils/time";
 
 const issueList = ref<MixtureListItem[]>([])
 
@@ -12,7 +13,7 @@ issueService.findAll().then(({data})=>{
       id: issue.id,
       type:{text:issue.categoryName, color:'blue'},
       title: issue.title,
-      date: '三天前',
+      date: Time.getFormatTime(new Date(issue.launchedAt).getTime()),
       voteCount: 76,
       commentCount: 11
     })
