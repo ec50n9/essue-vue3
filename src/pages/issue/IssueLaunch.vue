@@ -29,7 +29,7 @@ const handleCreated = (editor: any) => {
 // 初始化
 const formData = ref({
   title: '',
-  content: '<p>hello</p>',
+  content: '',
   categoryId: '',
   contactWay: '',
   contactNumber: ''
