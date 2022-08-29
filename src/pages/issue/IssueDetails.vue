@@ -51,6 +51,14 @@ const commentSubmit = async () => {
   editingComment.value = ''
 }
 
+// 点赞
+const voteIt = async ()=>{
+  const {data: {success}} = await issueService.voteIt(props.id)
+  if (success){
+    issue.value.voteCount++
+  }
+}
+
 const init = async () => {
   // 获取问题详情
   const {data: {data: _issue}} = await issueService.findOne(props.id)
@@ -74,8 +82,7 @@ onMounted(init)
     <EcTag size="lg" color="blue">🧑‍💻 {{ issue.author.nickname }}</EcTag>
     <EcTag size="lg" color="yellow">🕒 {{ issue.launchedAt }}</EcTag>
     <div class="flex-grow w-1/12"></div>
-    <EcTag size="md" color="blue">👍 {{ issue.voteCount }} 点赞</EcTag>
-    <EcTag size="md" color="yellow">💬 {{ issue.commentCount }} 评论</EcTag>
+    <EcTag size="md" color="blue" @click="voteIt">👍 {{ issue.voteCount }} 点赞</EcTag>
     <div class="space-x-4">
       <EcTag v-for="tag in issue.tags" size="md" :color="typeof tag === 'string' ? 'gray': tag.color">
         {{ typeof tag === 'string' ? tag : tag.text }}

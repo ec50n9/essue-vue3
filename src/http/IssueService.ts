@@ -8,6 +8,8 @@ class IssueService {
     delete = (id: string) => client.delete(`/issues/${id}`)
     update = (id: string, issueUpdateForm: IssueUpdateForm) => client.patch(`/issues/${id}`, issueUpdateForm)
 
+    voteIt = (id: string)=>client.post(`/issues/${id}/vote`)
+
     getCommentsById = (issueId: string) => client.get(`/issues/${issueId}/comments`)
     createComment = (issueId: string, content: string)=>client.post(`/issues/${issueId}/comments`, {content})
 }
