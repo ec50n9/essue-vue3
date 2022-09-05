@@ -20,12 +20,15 @@ const loginHandler = () => {
     if (res.data.success) {
       toast.success('登录成功！')
       userStore.setToken(res.data.data.tokenValue)
+      userStore.setLoginId(res.data.data.loginId)
+      userStore.loadProfile()
       router.back()
     } else {
       toast.error(res.data.message)
     }
   })
 }
+
 const registerHandler = () => {
 
 }
