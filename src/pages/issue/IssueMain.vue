@@ -4,13 +4,24 @@ import issueService from "../../http/IssueService";
 import {ref} from "vue";
 import {Time} from "../../utils/time";
 
+const categoryColor = (categoryName: string)=>{
+  switch (categoryName){
+    case '硬件':
+      return 'yellow'
+    case '软件':
+      return 'blue'
+    default:
+      return 'gray'
+  }
+}
+
 const issueList = ref<MixtureListItem[]>([])
 
 issueService.findAll().then(({data})=>{
   data.data.forEach((issue: { commentCount: number; voteCount: number; id: any; categoryName: any; title: any; launchedAt: string | number | Date; })=>{
     issueList.value.push({
       id: issue.id,
-      type:{text:issue.categoryName, color:'blue'},
+      type:{text:issue.categoryName, color:categoryColor(issue.categoryName)},
       title: issue.title,
       date: Time.getFormatTime(new Date(issue.launchedAt).getTime()),
       voteCount: issue.voteCount,
