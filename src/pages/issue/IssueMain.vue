@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import EssueItem from "../../components/EssueItem.vue";
 import issueService from "../../http/IssueService";
-import {ref} from "vue";
+import {reactive, ref} from "vue";
 import {Time} from "../../utils/time";
 import EcPagination from "../../components/EcPagination.vue";
 
+// 计数
+const count = reactive({
+  solved: 0,
+  notSolved: 0,
+})
+
+// 分类标签颜色对应
 const categoryColor = (categoryName: string) => {
   switch (categoryName) {
     case '硬件':
@@ -16,36 +23,45 @@ const categoryColor = (categoryName: string) => {
   }
 }
 
+// 分页
 const pagination = ref({
   current: 1,
   total: 10,
   size: 10
 })
-
+// 更新分页
 const paginationChangeHandler = (newValue: { current: number, total: number, size: number }) => {
   pagination.value = newValue
   refreshIssueList()
 }
 
+// 列表
 const issueList = ref<MixtureListItem[]>([])
-
+// 刷新列表
 const refreshIssueList = () => {
   issueService.findAllWithPaging(pagination.value.current, pagination.value.size).then(({data}) => {
+    // 更新分页
     pagination.value.current = data.data.current
     pagination.value.size = data.data.size
     pagination.value.total = data.data.total
 
+    // 更新列表
     issueList.value.length = 0
-    data.data.content.forEach((issue: { commentCount: number; voteCount: number; id: any; categoryName: any; title: any; launchedAt: string | number | Date; }) => {
+    data.data.content.forEach((issue: { commentCount: number; voteCount: number; id: any; solved: boolean; categoryName: any; title: any; launchedAt: string | number | Date; }) => {
       issueList.value.push({
         id: issue.id,
         type: {text: issue.categoryName, color: categoryColor(issue.categoryName)},
         title: issue.title,
+        solved: issue.solved,
         date: Time.getFormatTime(new Date(issue.launchedAt).getTime()),
         voteCount: issue.voteCount,
         commentCount: issue.commentCount
       })
     })
+
+    // 更新计数
+    count.solved = issueList.value.filter(issue=>issue.solved).length
+    count.notSolved = issueList.value.length - count.solved
   })
 }
 
@@ -124,12 +140,12 @@ const dataList: MixtureListItem[] = [
                     flex items-center shadow-lg shadow-blue-50">
     <div class="grow text-center">
       <p>已解决</p>
-      <p class="mt-1 text-3xl text-gray-700">34</p>
+      <p class="mt-1 text-3xl text-gray-700">{{ count.solved }}</p>
     </div>
     <div class="h-12 w-0.5 bg-indigo-300"></div>
     <div class="grow text-center">
       <p>待解决</p>
-      <p class="mt-1 text-3xl text-gray-700">7</p>
+      <p class="mt-1 text-3xl text-gray-700">{{ count.notSolved }}</p>
     </div>
     <div class="h-12 w-0.5 bg-indigo-300"></div>
     <div class="grow text-center">

@@ -5,6 +5,7 @@ interface MixtureListItem {
     type?: string | { text: string, color: string }
     title: string
     preview?: string
+    solved?: boolean
     covers?: string[]
     author?: string
     date: string
