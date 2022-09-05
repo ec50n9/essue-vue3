@@ -19,7 +19,7 @@ const categoryColor = (categoryName: string) => {
 const pagination = ref({
   current: 1,
   total: 10,
-  size: 2
+  size: 10
 })
 
 const paginationChangeHandler = (newValue: { current: number, total: number, size: number }) => {
