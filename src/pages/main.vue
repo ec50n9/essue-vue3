@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import router from '../router'
+import {useUserStore} from "../stores/userStore";
 
 const navList = [
   {
@@ -19,6 +20,8 @@ const navList = [
     name: '关于我们'
   }
 ]
+
+const userStore = useUserStore()
 </script>
 
 <template>
@@ -47,7 +50,9 @@ const navList = [
       </div>
       <!-- 头像 -->
       <RouterLink to="/login">
-        <div class="avatar h-11 w-11 rounded-full bg-blue-100"></div>
+        <div class="avatar h-11 w-11 rounded-full bg-blue-100 overflow-hidden">
+          <img class="w-full h-full object-cover" :src="userStore.profile.avatar" alt="头像">
+        </div>
       </RouterLink>
     </div>
   </header>
