@@ -3,9 +3,10 @@ import EssueItem from "../../components/EssueItem.vue";
 import issueService from "../../http/IssueService";
 import {ref} from "vue";
 import {Time} from "../../utils/time";
+import EcPagination from "../../components/EcPagination.vue";
 
-const categoryColor = (categoryName: string)=>{
-  switch (categoryName){
+const categoryColor = (categoryName: string) => {
+  switch (categoryName) {
     case '硬件':
       return 'yellow'
     case '软件':
@@ -15,20 +16,40 @@ const categoryColor = (categoryName: string)=>{
   }
 }
 
+const pagination = ref({
+  current: 1,
+  total: 10,
+  size: 2
+})
+
+const paginationChangeHandler = (newValue: { current: number, total: number, size: number }) => {
+  pagination.value = newValue
+  refreshIssueList()
+}
+
 const issueList = ref<MixtureListItem[]>([])
 
-issueService.findAll().then(({data})=>{
-  data.data.forEach((issue: { commentCount: number; voteCount: number; id: any; categoryName: any; title: any; launchedAt: string | number | Date; })=>{
-    issueList.value.push({
-      id: issue.id,
-      type:{text:issue.categoryName, color:categoryColor(issue.categoryName)},
-      title: issue.title,
-      date: Time.getFormatTime(new Date(issue.launchedAt).getTime()),
-      voteCount: issue.voteCount,
-      commentCount: issue.commentCount
+const refreshIssueList = () => {
+  issueService.findAllWithPaging(pagination.value.current, pagination.value.size).then(({data}) => {
+    pagination.value.current = data.data.current
+    pagination.value.size = data.data.size
+    pagination.value.total = data.data.total
+
+    issueList.value.length = 0
+    data.data.content.forEach((issue: { commentCount: number; voteCount: number; id: any; categoryName: any; title: any; launchedAt: string | number | Date; }) => {
+      issueList.value.push({
+        id: issue.id,
+        type: {text: issue.categoryName, color: categoryColor(issue.categoryName)},
+        title: issue.title,
+        date: Time.getFormatTime(new Date(issue.launchedAt).getTime()),
+        voteCount: issue.voteCount,
+        commentCount: issue.commentCount
+      })
     })
   })
-})
+}
+
+refreshIssueList()
 
 const dataList: MixtureListItem[] = [
   {
@@ -123,6 +144,7 @@ const dataList: MixtureListItem[] = [
       <EssueItem :data="item"></EssueItem>
     </li>
   </ul>
+  <EcPagination :pagination="pagination" @onChange="paginationChangeHandler"/>
 </template>
 
 <style scoped>
